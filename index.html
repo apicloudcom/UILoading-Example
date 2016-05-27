@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <style type="text/css">
+        html{ background-color: white; }
+        header{ border-bottom: 1px solid #ccc; padding: 25px 0; }
+        span {
+            padding: 10px 15px;
+            margin: 10px;
+            display: inline-block;
+            background-color: #e8e8e8;
+        }
+        .hover{ opacity: .4; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>UILoading</h1>
+        <mark>
+            使用前请详细阅读 文档 使用规则
+        </mark>
+    </header>
+    <span tapmode="hover" onclick="fnFlower()">flower</span>
+    <span tapmode="hover" onclick="fnKeyFrame()">keyFrame</span>
+    <span tapmode="hover" onclick="fnCloseFlower()">closeFlower</span>
+    <span tapmode="hover" onclick="fnCloseKeyFrame()">closeKeyFrame</span>
+</body>
+<script type="text/javascript">
+    var UILoading;
+    apiready = function() {
+        UILoading = api.require('UILoading');
+    };
+    function fnFlower(){
+        UILoading.flower({
+            center: {                            
+                x: 160,            
+                y: 300         
+            },
+            size: 30,
+            fixed: true
+        }, function(ret){   
+            alert(JSON.stringify(ret));
+        });
+    }
+    function fnKeyFrame(){
+        UILoading.keyFrame({
+            rect: {
+                w: 80,                              
+                h: 100      
+            },
+            styles: {
+                bg: 'rgba(0,0,0,0.5)', 
+                corner: 5, 
+                interval: 50,
+                frame:{ 
+                    w: 80, 
+                    h: 80
+                }
+            }
+        }, function(ret){   
+            alert(JSON.stringify(ret));
+        });
+    }
+    function fnCloseFlower(){
+        UILoading.closeFlower ({
+            id: 0
+        });
+    }
+    function fnCloseKeyFrame(){
+        UILoading.closeKeyFrame();
+    }
+</script>
+</html>
